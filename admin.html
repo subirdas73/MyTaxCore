@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyTaxCore Admin Panel</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+background:#f4f7fb;
+font-family:Arial,sans-serif;
+}
+
+.admin-box{
+max-width:500px;
+margin:80px auto;
+background:#fff;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.admin-box h2{
+text-align:center;
+color:#0d6efd;
+margin-bottom:25px;
+}
+
+.admin-box input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+.admin-box button{
+width:100%;
+padding:14px;
+background:#0d6efd;
+color:#fff;
+border:none;
+border-radius:10px;
+font-size:17px;
+cursor:pointer;
+margin-top:15px;
+}
+
+.admin-box button:hover{
+background:#0b5ed7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="admin-box">
+
+<h2>🔐 MyTaxCore Admin Login</h2>
+
+<input type="password" id="password" placeholder="Enter Admin Password">
+
+<button onclick="login()">
+Login
+</button>
+
+</div>
+
+<script>
+
+function login(){
+
+let pass=document.getElementById("password").value;
+
+if(pass==="MyTaxCore@2026"){
+
+window.location.href="dashboard.html";
+
+}else{
+
+alert("Wrong Password!");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
