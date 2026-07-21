@@ -6,6 +6,25 @@
 <title>MyTaxCore Admin Panel</title>
 
 <link rel="stylesheet" href="style.css">
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA98GfR8lxjHC8wx1_eoSYbjpSGhOFqrTA",
+  authDomain: "mytaxcore.firebaseapp.com",
+  projectId: "mytaxcore",
+  storageBucket: "mytaxcore.firebasestorage.app",
+  messagingSenderId: "984997488886",
+  appId: "1:984997488886:web:55cc4d601daf38578064d7",
+  measurementId: "G-0GYDME0TTY"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.firebaseAuth = auth;
+  </script>
 
 <style>
 
@@ -65,7 +84,9 @@ background:#0b5ed7;
 
 <h2>🔐 MyTaxCore Admin Login</h2>
 
-<input type="password" id="password" placeholder="Enter Admin Password">
+<input type="email" id="email" placeholder="Enter Admin Email">
+
+<input type="password" id="password" placeholder="Enter Password">
 
 <button onclick="login()">
 Login
@@ -75,19 +96,29 @@ Login
 
 <script>
 
-function login(){
+async function login(){
 
-let pass=document.getElementById("password").value;
+import("https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js")
+.then(({signInWithEmailAndPassword})=>{
 
-if(pass==="MyTaxCore@2026"){
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+
+signInWithEmailAndPassword(window.firebaseAuth,email,password)
+.then((userCredential)=>{
+
+alert("Login Successful");
 
 window.location.href="dashboard.html";
 
-}else{
+})
+.catch((error)=>{
 
-alert("Wrong Password!");
+alert("Wrong Email or Password");
 
-}
+});
+
+});
 
 }
 
