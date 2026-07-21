@@ -32,9 +32,10 @@ gap:10px;
 }
 
 .logo{
-width:45px;
-height:45px;
-object-fit:contain;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .logo-box h2{
@@ -130,8 +131,9 @@ transform:translateY(-8px);
 .card img{
 width:90px;
 height:90px;
-object-fit:contain;
+object-fit:cover;
 margin-bottom:15px;
+border-radius:50%;
 }
 
 .card h3{
