@@ -3,122 +3,659 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyTaxCore | Tax & Business Services</title>
-
-<link rel="stylesheet" href="style.css">
-
+<title>MyTaxCore | Tax & Business Compliance Services</title>
+  
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-</head> 
-  <a href="tel:+919775515990" class="call-btn">
-    <i class="fa-solid fa-phone"></i>
-  </a>
-<button id="topBtn">
-    <i class="fa-solid fa-arrow-up"></i>
-</button>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --navy-deep:#0B2A4A;
+  --navy:#12395F;
+  --gold:#C9A227;
+  --gold-light:#E8C766;
+  --paper:#F7F8FA;
+  --ink:#1B2430;
+  --muted:#5B6472;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  font-family:'Work Sans',sans-serif;
+  color:var(--ink);
+  margin:0;
+  background:#fff;
+}
+
+/* ---------- HEADER ---------- */
+
+.site-header{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:1000;
+  background:rgba(11,42,74,.97);
+  backdrop-filter:blur(8px);
+  transition:.3s;
+}
+
+.site-header.scrolled{
+  box-shadow:0 6px 20px rgba(0,0,0,.18);
+}
+
+.header-inner{
+  max-width:1200px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 24px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+}
+
+.brand-logo{
+  height:42px;
+  width:42px;
+  object-fit:contain;
+  border-radius:10px;
+  background:#fff;
+  padding:4px;
+}
+
+.brand-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.15;
+}
+
+.brand-name{
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  font-weight:800;
+  color:#fff;
+  letter-spacing:.4px;
+}
+
+.brand-tag{
+  font-size:11px;
+  color:var(--gold-light);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  font-weight:600;
+}
+
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.nav-link{
+  color:#DCE3EE;
+  text-decoration:none;
+  font-size:14.5px;
+  font-weight:600;
+  padding:9px 18px;
+  border-radius:30px;
+  transition:.25s;
+}
+
+.nav-link:hover{
+  color:#fff;
+  background:rgba(255,255,255,.08);
+}
+
+.nav-link.active{
+  background:var(--gold);
+  color:var(--navy-deep);
+}
+
+.menu-toggle{
+  display:none;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:22px;
+  cursor:pointer;
+  z-index:1100;
+}
+
+@media(max-width:768px){
+
+  .main-nav{
+    position:fixed;
+    top:0; right:0;
+    height:100vh;
+    width:240px;
+    background:var(--navy-deep);
+    flex-direction:column;
+    align-items:flex-start;
+    padding:100px 24px 24px;
+    gap:10px;
+    transform:translateX(100%);
+    transition:.35s ease;
+    box-shadow:-6px 0 24px rgba(0,0,0,.25);
+  }
+
+  .main-nav.open{
+    transform:translateX(0);
+  }
+
+  .nav-link{
+    width:100%;
+    padding:12px 16px;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .nav-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.4);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:1050;
+  }
+
+  .nav-overlay.show{
+    opacity:1;
+    pointer-events:auto;
+  }
+
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(160deg, rgba(11,42,74,.94), rgba(18,57,95,.88)),
+    url('assets/images/logo.png') center/cover;
+  position:relative;
+}
+
+.hero .overlay{
+  max-width:720px;
+  text-align:center;
+  padding:0 24px;
+}
+
+.hero .overlay span.eyebrow{
+  display:inline-block;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold-light);
+  border:1px solid rgba(232,199,102,.5);
+  padding:6px 18px;
+  border-radius:30px;
+  margin-bottom:22px;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:44px;
+  font-weight:800;
+  color:#fff;
+  line-height:1.25;
+  margin:0 0 14px;
+}
+
+.hero p{
+  color:#DCE3EE;
+  font-size:17px;
+  letter-spacing:1px;
+  margin:0 0 32px;
+}
+
+.hero-btn{
+  display:inline-block;
+  background:var(--gold);
+  color:var(--navy-deep);
+  font-weight:700;
+  padding:14px 34px;
+  border-radius:40px;
+  text-decoration:none;
+  font-size:16px;
+  transition:.3s;
+  box-shadow:0 10px 24px rgba(201,162,39,.35);
+}
+
+.hero-btn:hover{
+  background:var(--gold-light);
+  transform:translateY(-2px);
+}
+
+/* ---------- SERVICES ---------- */
+
+#services{
+  padding:90px 20px;
+  background:var(--paper);
+  text-align:center;
+}
+
+.title{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  font-weight:700;
+  color:var(--navy-deep);
+  margin-bottom:10px;
+}
+
+.title::after{
+  content:"";
+  display:block;
+  width:70px;
+  height:3px;
+  background:var(--gold);
+  margin:14px auto 50px;
+  border-radius:2px;
+}
+
+.cards{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:24px;
+}
+
+.cards .card{
+  background:#fff;
+  border-radius:18px;
+  padding:34px 24px;
+  box-shadow:0 10px 26px rgba(11,42,74,.08);
+  border-top:4px solid var(--gold);
+  transition:.3s;
+}
+
+.cards .card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 34px rgba(11,42,74,.16);
+}
+
+.cards .card img{
+  height:64px;
+  margin-bottom:16px;
+}
+
+.cards .card h3{
+  font-family:'Playfair Display',serif;
+  color:var(--navy-deep);
+  font-size:20px;
+  margin-bottom:20px;
+}
+
+.cards .card .hero-btn{
+  background:var(--navy-deep);
+  color:#fff;
+  font-size:14px;
+  padding:11px 26px;
+  box-shadow:none;
+}
+
+.cards .card .hero-btn:hover{
+  background:var(--gold);
+  color:var(--navy-deep);
+}
+
+/* ---------- CONTACT ---------- */
+
+#contact{
+  padding:90px 20px;
+  background:#fff;
+  text-align:center;
+}
+
+#contact h2{
+  font-family:'Playfair Display',serif;
+  color:var(--navy-deep);
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+#contact > p{
+  color:var(--muted);
+  font-size:15px;
+  margin:6px 0;
+}
+
+#contactForm{
+  max-width:520px;
+  margin:34px auto 0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  text-align:left;
+}
+
+#contactForm input,
+#contactForm select,
+#contactForm textarea{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid #E0E4EA;
+  border-radius:10px;
+  font-family:'Work Sans',sans-serif;
+  font-size:15px;
+  background:var(--paper);
+  outline:none;
+  transition:.25s;
+}
+
+#contactForm input:focus,
+#contactForm select:focus,
+#contactForm textarea:focus{
+  border-color:var(--gold);
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(201,162,39,.15);
+}
+
+#contactForm textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+#contactForm button{
+  background:#25D366;
+  color:#fff;
+  border:none;
+  padding:15px;
+  border-radius:40px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:.3s;
+}
+
+#contactForm button:hover{ background:#128C7E; }
+
+/* ---------- ABOUT ---------- */
+
+.about{
+  padding:80px 20px;
+  background:var(--navy-deep);
+  color:#EDEFF3;
+  text-align:center;
+}
+
+.about h2{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  color:#fff;
+  margin-bottom:18px;
+}
+
+.about p{
+  max-width:720px;
+  margin:0 auto;
+  line-height:1.8;
+  color:#C9D2E0;
+  font-size:15.5px;
+}
+
+/* ---------- FAQ ---------- */
+
+.faq{
+  padding:90px 20px;
+  background:var(--paper);
+  text-align:center;
+}
+
+.faq h2{
+  font-family:'Playfair Display',serif;
+  color:var(--navy-deep);
+  font-size:30px;
+  margin-bottom:40px;
+}
+
+.faq-box{
+  max-width:700px;
+  margin:0 auto 16px;
+  background:#fff;
+  border-left:4px solid var(--gold);
+  border-radius:12px;
+  padding:20px 24px;
+  text-align:left;
+  box-shadow:0 6px 16px rgba(11,42,74,.06);
+}
+
+.faq-box h3{
+  font-family:'Work Sans',sans-serif;
+  color:var(--navy-deep);
+  font-size:16.5px;
+  margin:0 0 8px;
+}
+
+.faq-box p{
+  color:var(--muted);
+  font-size:14.5px;
+  margin:0;
+  line-height:1.6;
+}
+
+/* ---------- MAP ---------- */
+
+.map-section{
+  padding:90px 20px;
+  text-align:center;
+  background:#fff;
+}
+
+.map-section h2{
+  font-family:'Playfair Display',serif;
+  color:var(--navy-deep);
+  font-size:30px;
+  margin-bottom:26px;
+}
+
+.map-section iframe{
+  max-width:900px;
+  margin:0 auto;
+  display:block;
+  box-shadow:0 10px 26px rgba(11,42,74,.12);
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+  background:#081D33;
+  color:#C9D2E0;
+  text-align:center;
+  padding:50px 20px 30px;
+}
+
+footer h3{
+  font-family:'Playfair Display',serif;
+  color:#fff;
+  font-size:22px;
+  margin-bottom:6px;
+}
+
+footer p{ margin:4px 0; font-size:14.5px; }
+
+footer a{
+  color:var(--gold-light);
+  text-decoration:none;
+  font-size:13.5px;
+}
+
+footer a:hover{ text-decoration:underline; }
+
+/* ---------- FLOATING BUTTONS ---------- */
+
+.whatsapp{
+  position:fixed;
+  bottom:26px;
+  right:26px;
+  background:#25D366;
+  color:#fff;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(37,211,102,.4);
+  z-index:999;
+  transition:.3s;
+}
+
+.whatsapp:hover{ transform:scale(1.08); }
+
+.call-btn{
+  position:fixed;
+  bottom:26px;
+  left:26px;
+  background:var(--navy-deep);
+  color:#fff;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(11,42,74,.35);
+  z-index:999;
+  transition:.3s;
+}
+
+.call-btn:hover{ background:var(--gold); color:var(--navy-deep); }
+
+#topBtn{
+  position:fixed;
+  bottom:92px;
+  right:26px;
+  background:#fff;
+  color:var(--navy-deep);
+  border:2px solid var(--gold);
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  font-size:16px;
+  cursor:pointer;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  transition:.3s;
+}
+
+#topBtn.show{ display:flex; }
+#topBtn:hover{ background:var(--gold); color:#fff; }
+
+@media(max-width:600px){
+  .hero h1{ font-size:30px; }
+  .hero p{ font-size:14.5px; }
+}
+
+</style>
+
+</head>
+
 <body>
 
-<header class="header">
+<header class="site-header" id="siteHeader">
 
-<div class="logo-box">
+<div class="header-inner">
 
-<img src="assets/images/logo.png" class="logo">
-
-<h2>MyTaxCore</h2>
-
+<a href="#home" class="brand">
+<img src="assets/images/logo.png" class="brand-logo">
+<div class="brand-text">
+<span class="brand-name">MyTaxCore</span>
+<span class="brand-tag">Tax & Business Compliance</span>
 </div>
+</a>
 
-<div class="menu-btn">
-
-<i class="fa-solid fa-bars"></i>
-
-</div>
-
-<nav>
-
-<a href="#">Home</a>
-
-<a href="#services">Services</a>
-
-<a href="#contact">Contact</a>
-
+<nav class="main-nav" id="navMenu">
+<a href="#home" class="nav-link" data-section="home">Home</a>
+<a href="#services" class="nav-link" data-section="services">Services</a>
+<a href="#contact" class="nav-link" data-section="contact">Contact</a>
 </nav>
+
+<button class="menu-toggle" id="menuBtn" aria-label="Menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+</div>
 
 </header>
 
-<section class="hero">
+<div class="nav-overlay" id="navOverlay"></div>
 
-<div class="overlay">
-
-<h1>Tax & Business Compliance Services</h1>
-
-<p>
-Income Tax • GST • EPFO • MSME
-</p>
-
-<a href="#services" class="hero-btn">
-Explore Services
+<a href="tel:+917365996618" class="call-btn">
+<i class="fa-solid fa-phone"></i>
 </a>
 
+<button id="topBtn">
+<i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<section class="hero" id="home">
+
+<div class="overlay">
+<span class="eyebrow">Trusted Since 2026</span>
+<h1>Tax & Business Compliance Services</h1>
+<p>Income Tax • GST • EPFO • MSME</p>
+<a href="#services" class="hero-btn">Explore Services</a>
 </div>
 
 </section>
 
 <section id="services">
 
-<h2 class="title">
-Our Services
-</h2>
+<h2 class="title">Our Services</h2>
 
 <div class="cards">
 
 <div class="card">
-
 <img src="assets/images/epfo.png">
-
 <h3>EPFO</h3>
-
-<a href="pages/epfo.html" class="hero-btn">
-    View Services
-</a>
-
+<a href="pages/epfo.html" class="hero-btn">View Services</a>
 </div>
 
 <div class="card">
-
 <img src="assets/images/income-tax.png">
-
 <h3>Income Tax</h3>
-
-<a href="pages/income-tax.html" class="hero-btn">
-    View Services
-</a>
-
+<a href="pages/income-tax.html" class="hero-btn">View Services</a>
 </div>
 
 <div class="card">
-
 <img src="assets/images/gst.png">
-
 <h3>GST</h3>
-
-<a href="pages/gst.html" class="hero-btn">
-    View Services
-</a>
-
+<a href="pages/gst.html" class="hero-btn">View Services</a>
 </div>
 
 <div class="card">
-
 <img src="assets/images/msme.png">
-
 <h3>MSME</h3>
-
-<a href="pages/msme.html" class="hero-btn">
-    View Services
-</a>
-
+<a href="pages/msme.html" class="hero-btn">View Services</a>
 </div>
 
 </div>
@@ -129,16 +666,13 @@ Our Services
 
 <h2>Contact Us</h2>
 
-<p><i class="fa-solid fa-phone"></i> +91 9775515190</p>
-
+<p><i class="fa-solid fa-phone"></i> +91 9775515990</p>
 <p><i class="fa-solid fa-envelope"></i> yourmail@example.com</p>
 
 <form id="contactForm">
 
 <input type="text" id="name" placeholder="Full Name" required>
-
 <input type="tel" id="mobile" placeholder="Mobile Number" required>
-
 <input type="email" id="email" placeholder="Email Address">
 
 <select id="service" required>
@@ -160,15 +694,11 @@ Send on WhatsApp
 
 </section>
 
-<a
-href="https://wa.me/919775515990"
-class="whatsapp"
-target="_blank">
-
+<a href="https://wa.me/919775515990" class="whatsapp" target="_blank">
 <i class="fa-brands fa-whatsapp"></i>
-
 </a>
-  <section class="about">
+
+<section class="about">
 
 <h2>About MyTaxCore</h2>
 
@@ -185,29 +715,23 @@ Our goal is to deliver fast, secure and reliable services at affordable prices.
 <h2>Frequently Asked Questions</h2>
 
 <div class="faq-box">
-
 <h3>How can I book a service?</h3>
-
 <p>You can book any service through WhatsApp.</p>
-
 </div>
 
 <div class="faq-box">
-
 <h3>How do I make payment?</h3>
-
 <p>Online payment option will be available soon.</p>
-
 </div>
 
+<div class="faq-box">
 <h3>How long does a service take?</h3>
-
 <p>Most services are completed within 24–48 hours after document verification.</p>
-
 </div>
 
 </section>
-  <section class="map-section">
+
+<section class="map-section">
 
 <h2>Our Location</h2>
 
@@ -220,16 +744,13 @@ allowfullscreen=""
 loading="lazy">
 </iframe>
 
-  </section>
+</section>
 
 <footer>
 
 <h3>MyTaxCore</h3>
-
 <p>Tax & Business Compliance Services</p>
-
 <p>📞 +91 9775515990</p>
-
 <p>✉ yourmail@example.com</p>
 
 <br>
@@ -243,3 +764,76 @@ loading="lazy">
 <p>© 2026 MyTaxCore. All Rights Reserved.</p>
 
 </footer>
+
+<script>
+
+const menuBtn = document.getElementById('menuBtn');
+const navMenu = document.getElementById('navMenu');
+const navOverlay = document.getElementById('navOverlay');
+const siteHeader = document.getElementById('siteHeader');
+
+function closeMenu(){
+  navMenu.classList.remove('open');
+  navOverlay.classList.remove('show');
+  menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+}
+
+menuBtn.addEventListener('click', () => {
+  const isOpen = navMenu.classList.toggle('open');
+  navOverlay.classList.toggle('show', isOpen);
+  menuBtn.innerHTML = isOpen
+    ? '<i class="fa-solid fa-xmark"></i>'
+    : '<i class="fa-solid fa-bars"></i>';
+});
+
+navOverlay.addEventListener('click', closeMenu);
+navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+window.addEventListener('scroll', () => {
+  siteHeader.classList.toggle('scrolled', window.scrollY > 30);
+
+  const topBtn = document.getElementById('topBtn');
+  if(window.scrollY > 400){
+    topBtn.classList.add('show');
+  } else {
+    topBtn.classList.remove('show');
+  }
+});
+
+document.getElementById('topBtn').addEventListener('click', () => {
+  window.scrollTo({ top:0, behavior:'smooth' });
+});
+
+const sections = document.querySelectorAll('#home, #services, #contact');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.section === entry.target.id);
+      });
+    }
+  });
+}, { threshold: 0.4 });
+
+sections.forEach(sec => observer.observe(sec));
+
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const mobile = document.getElementById('mobile').value;
+  const email = document.getElementById('email').value;
+  const service = document.getElementById('service').value;
+  const message = document.getElementById('message').value;
+
+  const text = `Hello, I want to book a service.%0A%0AName: ${name}%0AMobile: ${mobile}%0AEmail: ${email}%0AService: ${service}%0AMessage: ${message}`;
+
+  window.open(`https://wa.me/919775515990?text=${text}`, '_blank');
+});
+
+</script>
+
+</body>
+</html>
