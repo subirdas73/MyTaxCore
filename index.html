@@ -520,6 +520,32 @@ footer a{
 }
 
 footer a:hover{ text-decoration:underline; }
+  .social-links{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin:16px 0;
+}
+
+.social-links a{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  color:var(--gold-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:19px;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.social-links a:hover{
+  background:var(--gold);
+  color:var(--navy-deep);
+  transform:translateY(-3px);
+}
 
 /* ---------- FLOATING BUTTONS ---------- */
 
@@ -772,7 +798,16 @@ loading="lazy">
 <h3>MyTaxCore</h3>
 <p>Tax & Business Compliance Services</p>
 <p>📞 +91 9775515990</p>
-<p>✉ yourmail@example.com</p>
+<p>✉ subir.das.2nd@gmail.com</p>
+
+  <div class="social-links">
+<a href="https://facebook.com/yourpage" target="_blank" aria-label="Facebook">
+<i class="fa-brands fa-facebook"></i>
+</a>
+<a href="https://instagram.com/yourpage" target="_blank" aria-label="Instagram">
+<i class="fa-brands fa-instagram"></i>
+</a>
+  </div>
 
 <br>
 
@@ -782,7 +817,7 @@ loading="lazy">
 
 <br><br>
 
-<p>© 2026 MyTaxCore. All Rights Reserved.</p>
+<p>© 2026 MyTaxCore. All Rights Reserved.This website was created by Subir Das.</p>
 
 </footer>
 
